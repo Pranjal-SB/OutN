@@ -13,7 +13,8 @@ Made with ❤️ in Python
 - ezy catch : just copy and paste
 - Light and not system heavy
 - Cross platform
-- Self-hostable and easy to use
+- Self-hostable
+- easy to use
 
 
 
@@ -39,11 +40,15 @@ just run run.bat by double clicking it
 
 - requires [python](https://www.python.org/) to be installed
 
-install dependencies using
+download the latest release by going to [releases](https://github.com/Pranjal-SB/OutN/releases/latest) and downloading the source code
+
+extract the folder and open a command prompt window in it
+
+install dependencies using:
 ```
 python3 -m pip install -r requirements.txt
 ```
-then run the program using
+then run the program using:
 ```
 python3 main.py
 ```
