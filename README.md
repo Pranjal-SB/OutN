@@ -11,7 +11,6 @@ Made with ❤️ in Python
 - 'Ai' recognition
 - Automatic
 - ezy catch : just copy and paste
-- supports all pokemon
 - Light and not system heavy
 - Cross platform
 - Self-hostable and easy to use
@@ -53,6 +52,7 @@ and then will save it to 'config' so that it does not ask you every time it runs
 
 > [!NOTE]
 > the token is only saved locally and is not sent anywhere.
+
 > [!CAUTION]
 > make sure not to upload 'config' anywhere as it contains your bot token.
 
