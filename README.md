@@ -89,5 +89,5 @@ currently you can:
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://github.com/Pranjal-SB/OutN?tab=MIT-1-ov-file)
 
