@@ -34,7 +34,7 @@ Made with ❤️ in Python
 ### automatic
 
 just run run.bat by double clicking it
-- it will install the dependencies and run the program for you in a venv(virtual environment) so as to not to mess with your python environment.
+- it will automatically install the dependencies and run the program for you in a seperate window.
 
 ### manual
 
