@@ -7,10 +7,11 @@ Made with ❤️ in Python
 
 
 ## Features
-
+- ⭐ can be used to make CUSTOM bots for your server
+- ⭐ completely FOSS i.e. Free and Open Source
 - 'Ai' recognition
-- Automatic
 - ezy catch : just copy and paste
+- Automatic
 - Light and not system heavy
 - Cross platform
 - Self-hostable
