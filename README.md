@@ -41,7 +41,7 @@ just run run.bat by double clicking it
 
 - requires [python](https://www.python.org/) to be installed
 
-download the latest release by going to [releases](https://github.com/Pranjal-SB/OutN/releases/latest) and downloading the source code
+download the latest code by clicking on the code button and then the download zip button.
 
 extract the folder and open a command prompt window in it
 
