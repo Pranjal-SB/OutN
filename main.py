@@ -1,47 +1,67 @@
 import asyncio
+import configparser
 import json
-import random
+import os
 from io import BytesIO
 
 import aiohttp
 import aiosqlite
-import numpy as np
 import discord
+import numpy as np
 from discord.ext import commands
 from PIL import Image
 from tensorflow.keras.models import load_model
 
-
-def get_token():
-  try:
-    with open('config', 'r') as f:
-      return f.read().strip()
-  except FileNotFoundError:
-    token = input("Please enter your bot token: ").strip()
-    with open('config', 'w') as f:
-      f.write(token)
-    return token
+config = configparser.ConfigParser()
+config_file = 'config.ini'
 
 
-TOKEN = get_token()
+def get_config():
+  if not os.path.exists(config_file):
+    token = input("Enter your Discord bot token: ")
+    rping = input("Enter the role ID for rping: ")
+
+    config['DEFAULT'] = {'TOKEN': token, 'RPING': rping}
+
+    with open(config_file, 'w') as configfile:
+      config.write(configfile)
+  else:
+    config.read(config_file)
+
+
+get_config()
+
+TKN = config['DEFAULT']['TOKEN']
+rping = int(config['DEFAULT']['RPING'])
 
 intents = discord.Intents.all()
 intents.message_content = True
 intents.members = True
-bot = commands.Bot(command_prefix='on.', intents=intents)
+bot = commands.Bot(command_prefix='~', intents=intents)
+game = discord.Game("Pokémon")
 
 loaded_model = load_model('model.h5', compile=False)
+
 with open('classes.json', 'r') as f:
   classes = json.load(f)
+
+with open('data/trares', 'r', encoding='utf8') as file:
+  rares_list = file.read()
+
+with open('data/legendary', 'r') as file:
+  legendary_list = file.read()
+
+with open('data/mythical', 'r') as file:
+  mythical_list = file.read()
 
 
 @bot.event
 async def on_ready():
-  print('Logged in as', bot.user)
   bot.db = await aiosqlite.connect("pokemon.db")
   await bot.db.execute("CREATE TABLE IF NOT EXISTS pokies (command str)")
-  print("pokies table created!!")
   await bot.db.commit()
+  print('Logged in as', bot.user)
+  await bot.change_presence(status=discord.Status.online, activity=game)
 
 
 @bot.event
@@ -63,9 +83,13 @@ async def on_message(message):
       classes_x = np.argmax(predictions, axis=1)
       name = list(classes.keys())[classes_x[0]]
       async with message.channel.typing():
-        await asyncio.sleep(random.randint(3, 6))
-        await message.channel.send(f"__**{name}**__ Spawned | catch using:")
-        await message.channel.send(f"<@716390085896962058> c {name}")
+        if name in rares_list:
+          await message.channel.send(
+              f"<@&{rping}> **__{name}__** is a rare pokemon! catch using:")
+          await message.channel.send(f"@Pokétwo#8236 c {name}")
+        else:
+          await message.channel.send(f'**__{name}__** | catch using:')
+          await message.channel.send(f"@Pokétwo#8236 c {name}")
 
 
 async def preprocess_image(image):
@@ -76,4 +100,4 @@ async def preprocess_image(image):
   return image
 
 
-bot.run(TOKEN)
+bot.run(TKN)
