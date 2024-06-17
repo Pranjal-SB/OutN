@@ -1,10 +1,10 @@
 
 # OutN 
-> v2
+
 A Self-hostable FOSS pokemon recognition bot for discord and made more specifically for the discord pokemon game "Poketwo".
 
 Made with ❤️ in Python
-
+> v2
 
 ## Features
 - ⭐ can be used to make CUSTOM bots for your server
