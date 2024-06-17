@@ -4,7 +4,7 @@
 A Self-hostable FOSS pokemon recognition bot for discord and made more specifically for the discord pokemon game "Poketwo".
 
 Made with ❤️ in Python
-> v2
+> current stable release : v2.0
 
 ## Features
 - ⭐ can be used to make CUSTOM bots for your server
