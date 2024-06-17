@@ -77,8 +77,8 @@ will add soon
 
 ## FAQ
 
-@ I got this error ``` ModuleNotFoundError: No module named '<module name>' ``` what do i do?
-A do ```pip install <modulename>```
+Q) I got this error ``` ModuleNotFoundError: No module named '<module name>' ``` what do i do?
+A) do ```pip install <modulename>```
 
 rest will add soon
 
