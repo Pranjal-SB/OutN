@@ -68,7 +68,7 @@ and then will save it to 'config.ini' so that it does not ask you every time it 
 
 ## Changelog
 
-will add soon
+[CHANGELOG.md](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md)
 
 ## Documentation
 
