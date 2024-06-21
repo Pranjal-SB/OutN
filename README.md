@@ -1,5 +1,5 @@
 
-# OutN 
+# The OutN Project
 
 A Self-hostable FOSS pokemon recognition bot for discord and made more specifically for the discord pokemon game "Poketwo".
 
