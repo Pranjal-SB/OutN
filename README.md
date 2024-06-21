@@ -22,9 +22,9 @@ Made with ❤️ in Python
 
 ## Roadmap
 
-- [x] Ai identification 
-- [x] Rare ping
-- [x] Embeds
+- [x] Ai identification <- [v1.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v10)
+- [x] Rare ping <- [v2.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v20)
+- [x] Embeds <- [v3.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v30)
 - [ ] Hint solver
 - [ ] catch logs
 - [ ] spawn logs
