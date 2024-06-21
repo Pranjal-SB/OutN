@@ -7,3 +7,7 @@
 ## v2.0
 - added rare ping
 - fixed bugs
+
+## v3.0
+- switched to embeds
+- optimised code
