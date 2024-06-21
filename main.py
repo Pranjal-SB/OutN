@@ -5,10 +5,10 @@ import os
 import discord
 from discord.ext import commands
 
-from TheOutNModule import TheOutNModule
+from makeconfig import TKN
+from TheOutNModule import outnmodule
 
 version = 'v4.0'
-
 
 #user inputs
 config = configparser.ConfigParser()
@@ -53,7 +53,7 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-  await TheOutNModule(bot, message)
+  await outnmodule(bot, message)
 
 
 bot.run(TKN)
