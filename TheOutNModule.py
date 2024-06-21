@@ -1,6 +1,7 @@
 import aiohttp
 import json
 import os
+import platform
 
 import numpy as np
 from PIL import Image
@@ -12,7 +13,14 @@ import hint_helper
 import preprocess_image
 
 loaded_model = load_model('model.h5', compile=False)
-os.system("clear")
+
+def clear_terminal():
+    if platform.system() == "Windows":
+        os.system('cls')
+    else:
+        os.system('clear')
+
+clear_terminal()
 
 with open('classes.json', 'r') as f:
   classes = json.load(f)
@@ -30,7 +38,7 @@ with open('data/regional', 'r') as file:
   reg_list = file.read()
 
 
-async def TheOutNModule(bot, message):
+async def outnmodule(bot, message):
   if message.author.id == 716390085896962058 and len(message.embeds) > 0:
     embed = message.embeds[0]
     if "appeared!" in embed.title and embed.image:
