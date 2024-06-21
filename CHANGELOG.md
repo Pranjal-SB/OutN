@@ -11,3 +11,8 @@
 ## v3.0
 - switched to embeds
 - optimised code
+
+## v3.1
+- upgraded embeds -> separated mythic, legendary and ub 
+- optimised rare ping
+- optimised code
