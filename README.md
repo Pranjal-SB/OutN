@@ -4,21 +4,20 @@
 A Self-hostable FOSS pokemon recognition bot for discord and made more specifically for the discord pokemon game "Poketwo".
 
 Made with ❤️ in Python
-> current release : [v3.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v30) [stable](https://github.com/Pranjal-SB/OutN/releases/latest)
+> current release : [v3.1](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v31) [stable](https://github.com/Pranjal-SB/OutN/releases/latest)
 
 ## Features
 - ⭐ can be used to make CUSTOM bots for your server
 - ⭐ completely FOSS i.e. Free and Open Source
-- Pretty embeds
-- 'Ai' recognition
+- ⭐ 'Ai' recognition
 - rare ping
+- Pretty embeds
+- Self-hostable
+- easy to use
 - ezy catch : just copy and paste
 - Automatic
 - Light and not system heavy
 - Cross platform
-- Self-hostable
-- easy to use
-
 
 
 ## Roadmap
