@@ -73,7 +73,7 @@ Q) I got this error ``` ModuleNotFoundError: No module named '<module name>' ```
 
 A) do ```pip install <modulename>```
 
-rest will add soon
+rest -> you tell me 😆
 
 
 ## Feedback and Support
