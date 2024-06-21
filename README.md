@@ -94,7 +94,7 @@ currently you can:
 
 ## Authors
 
-- Myself
+- [Myself](https://github.com/Pranjal-SB)
 
 
 ## License
