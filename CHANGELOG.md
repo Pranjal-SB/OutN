@@ -16,3 +16,9 @@
 - upgraded embeds -> separated mythic, legendary and ub 
 - optimised rare ping
 - optimised code
+
+# v4.0
+- added hint solver
+- upgraded embeds
+- upgraded rare ping
+- multifile system for easier code reading and editing
