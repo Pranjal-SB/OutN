@@ -100,6 +100,9 @@ currently you can:
 
 - [Myself](https://github.com/Pranjal-SB)
 
+## Code Of Conduct
+
+Please Adhere to the [Code of Conduct](https://github.com/Pranjal-SB/OutN?tab=coc-ov-file)
 
 ## License
 
