@@ -10,14 +10,14 @@ Made with ❤️ in Python
 - ⭐ can be used to make CUSTOM bots for your server
 - ⭐ completely FOSS i.e. Free and Open Source
 - ⭐ 'Ai' recognition
-- rare ping
-- Pretty embeds
-- Self-hostable
-- easy to use
-- ezy catch : just copy and paste
-- Automatic
-- Light and not system heavy
-- Cross platform
+- ❗ rare ping
+- 🤩 Pretty embeds
+- ➕ Self-hostable
+- 😌 easy to use
+- 💪 ezy catch : just copy and paste
+- 😎 Automatic
+- ☁️ Light and not system heavy
+- 🤝 Cross platform
 
 
 ## Roadmap
@@ -94,7 +94,7 @@ currently you can:
 
 ## Authors
 
-- myself
+- Myself
 
 
 ## License
