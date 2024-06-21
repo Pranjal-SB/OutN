@@ -4,13 +4,14 @@
 A Self-hostable FOSS pokemon recognition bot for discord and made more specifically for the discord pokemon game "Poketwo".
 
 Made with ❤️ in Python
-> current release : [v3.1](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v31) [stable](https://github.com/Pranjal-SB/OutN/releases/latest)
+> current release : [v4.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v40) [stable](https://github.com/Pranjal-SB/OutN/releases/latest)
 
 ## Features
 - ⭐ can be used to make CUSTOM bots for your server
 - ⭐ completely FOSS i.e. Free and Open Source
 - ⭐ 'Ai' recognition
 - ❗ rare ping
+- 👌 built-in hint solver
 - 🤩 Pretty embeds
 - ➕ Self-hostable
 - 😌 easy to use
@@ -25,11 +26,12 @@ Made with ❤️ in Python
 - [x] Ai identification <- [v1.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v10)
 - [x] Rare ping <- [v2.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v20)
 - [x] Embeds <- [v3.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v30)
-- [ ] Hint solver
+- [x] Hint solver <- [v4.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v40)
 - [ ] StarBoard
 - [ ] catch logs
 - [ ] spawn logs
-- [ ] Add commands eg. help and all
+- [ ] help command
+- [ ] more..
 
 
 
