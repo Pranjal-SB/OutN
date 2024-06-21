@@ -25,6 +25,7 @@ Made with ❤️ in Python
 - [x] Ai identification 
 - [x] Rare ping
 - [x] Embeds
+- [ ] Hint solver
 - [ ] catch logs
 - [ ] spawn logs
 - [ ] Add commands eg. help and all
