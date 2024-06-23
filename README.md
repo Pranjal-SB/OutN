@@ -68,6 +68,11 @@ download the OutN by
 - [latest stable release](https://github.com/Pranjal-SB/OutN/releases/latest)
 - [source code](https://github.com/Pranjal-SB/OutN/archive/refs/heads/main.zip)
 
+1. make a [discord bot](https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token#creating-a-bot)
+2. star [this repo](https://github.com/Pranjal-SB/OutN) 😉
+3. follow any of the below methods for usage
+
+
 ### automatically
 
 extract the folder just run 'run.bat'
@@ -81,16 +86,15 @@ it will install dependencies and run the program by itself
 
 extract the folder and open a command prompt window in it
 
-install dependencies using:
-```
-pip install aiohttp aiosqlite discord numpy pillow tensorflow
-```
-then run the program using:
-```
-python main.py
-```
-the program will ask for your [bot token](https://www.writebots.com/discord-bot-token/), [role ids](https://discordhelp.net/role-id) (for rare and regional ping) and [channel id](https://turbofuture.com/internet/Discord-Channel-ID) (for starboard) on initialisation
-and then will save it to 'config.ini' so that it does not ask you every time it runs.
+1. install dependencies using:
+  ```
+  pip install aiohttp aiosqlite discord numpy pillow tensorflow
+  ```
+2. then run the program using:
+  ```
+  python main.py
+  ```
+>  the program will ask for your [bot token](https://www.writebots.com/discord-bot-token/), [role ids](https://discordhelp.net/role-id) (for rare and regional ping) and [channel id](https://turbofuture.com/internet/Discord-Channel-ID) (for starboard) on initialisation and then will save it to 'config.ini' so that it does not ask you every time it runs.
 
 > [!NOTE]
 > the token is only saved locally and is not sent anywhere.
