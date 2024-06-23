@@ -10,7 +10,8 @@ def get_config():
     token = input("Enter your Discord bot token: ")
     rping = input("Enter the role ID for rare ping: ")
     regping = input("Enter the role ID for regional ping: ")
-    config['DEFAULT'] = {'TOKEN': token, 'RPING': rping, 'REGPING': regping}
+    starch = input("Enter the channel ID for starboard: ")
+    config['DEFAULT'] = {'TOKEN': token, 'RPING': rping, 'REGPING': regping, 'STARCH': starch}
 
     with open(config_file, 'w') as configfile:
       config.write(configfile)
@@ -22,3 +23,4 @@ get_config()
 TKN = config['DEFAULT']['TOKEN']
 rping = int(config['DEFAULT']['RPING'])
 regping = int(config['DEFAULT']['REGPING'])
+starch = int(config['DEFAULT']['STARCH'])

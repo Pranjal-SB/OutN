@@ -17,8 +17,15 @@
 - optimised rare ping
 - optimised code
 
-# v4.0
+## v4.0
 - added hint solver
 - upgraded embeds
 - upgraded rare ping
+    - added regional support
 - multifile system for easier code reading and editing
+
+## v5.0
+- added STARBOARD!!
+    - added starboard to config
+- fixed bugs
+    - hint not working

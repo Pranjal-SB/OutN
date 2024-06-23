@@ -10,6 +10,7 @@ from tensorflow.keras.models import load_model
 
 import embeds
 import hint_helper
+import star_helper
 import preprocess_image
 
 loaded_model = load_model('model.h5', compile=False)
@@ -39,37 +40,45 @@ with open('data/regional', 'r') as file:
 
 
 async def outnmodule(bot, message):
-  if message.author.id == 716390085896962058 and len(message.embeds) > 0:
-    embed = message.embeds[0]
-    if "appeared!" in embed.title and embed.image:
-      url = embed.image.url
+  if message.author.id == 716390085896962058:
+    if len(message.embeds) > 0:
+      embed = message.embeds[0]
+      if "appeared!" in embed.title and embed.image:
+        url = embed.image.url
+        async with aiohttp.ClientSession() as session:
+          async with session.get(url=url) as resp:
+            if resp.status == 200:
+              content = await resp.read()
+              image_data = BytesIO(content)
+              image = Image.open(image_data)
+        preprocessed_image = await preprocess_image.pimg(image)
+        predictions = loaded_model.predict(preprocessed_image)
+        classes_x = np.argmax(predictions, axis=1)
+        name = list(classes.keys())[classes_x[0]]
 
-      async with aiohttp.ClientSession() as session:
-        async with session.get(url=url) as resp:
-          if resp.status == 200:
-            content = await resp.read()
-            image_data = BytesIO(content)
-            image = Image.open(image_data)
-      preprocessed_image = await preprocess_image.pimg(image)
-      predictions = loaded_model.predict(preprocessed_image)
-      classes_x = np.argmax(predictions, axis=1)
-      name = list(classes.keys())[classes_x[0]]
+        if name in mythical_list:
+          await embeds.mythic_embed(message, name)
+          await star_helper.starit_mythic(bot, message, name)
 
-      if name in mythical_list:
-        await embeds.mythic_embed(message, name)
+        elif name in legendary_list and name != 'natu':
+          await embeds.legendary_embed(message, name)
+          await star_helper.starit_legen(bot, message, name)
 
-      elif name in legendary_list and name != 'natu':
-        await embeds.legendary_embed(message, name)
+        elif name in ub_list:
+          await embeds.ub_embed(message, name)
+          await star_helper.starit_ub(bot, message, name)
 
-      elif name in ub_list:
-        await embeds.ub_embed(message, name)
+        elif "galar" in name or "alola" in name or "hisui" in name or name in reg_list:
+          await embeds.reg_embed(message, name)
+          await star_helper.starit_reg(bot, message, name)
 
-      elif "galar" in name or "alola" in name or "hisui" in name or name in reg_list:
-        await embeds.reg_embed(message, name)
+        else:
+          await embeds.common_embed(message, name)
 
-      else:
-        await embeds.common_embed(message, name)
-
+    elif 'The pokémon is ' in message.content:
+      for i in hint_helper.solve(message.content):
+        await embeds.hint_embed(i, message)
+        
   elif 'The pokémon is ' in message.content:
     for i in hint_helper.solve(message.content):
       await embeds.hint_embed(i, message)
