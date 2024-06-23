@@ -64,12 +64,20 @@ Made with ❤️ in Python
 
 ## Usage/installation
 
+download the OutN by 
+- [latest stable release](https://github.com/Pranjal-SB/OutN/releases/latest)
+- [source code](https://github.com/Pranjal-SB/OutN/archive/refs/heads/main.zip)
+
+### automatically
+
+extract the folder just run 'run.bat'
+
+it will install dependencies and run the program by itself
+
 ### manually
 - requires 
   - [python](https://www.python.org/) to be installed
   - A discord [bot account](https://discord.com/developers/applications/)
-
-download the latest code by clicking on the code button and then the download zip button.
 
 extract the folder and open a command prompt window in it
 
@@ -90,11 +98,7 @@ and then will save it to 'config.ini' so that it does not ask you every time it 
 > [!CAUTION]
 > make sure not to upload 'config.ini' anywhere as it contains your bot token.
 
-### automatically
 
-just run 'run.bat'
-
-it will install dependencies and run the program by itself
 
 ## Changelog
 
