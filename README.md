@@ -25,6 +25,10 @@ Made with ❤️ in Python
 
 - [x] Ai identification <- [v1.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v10)
 - [x] Rare ping <- [v2.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v20)
+  - [x] mythic
+  - [x] legendary
+  - [x] ultra beast
+  - [x] regional 
 - [x] Embeds <- [v3.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v30)
 - [x] Hint solver <- [v4.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v40)
 - [ ] StarBoard
