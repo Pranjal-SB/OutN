@@ -1,6 +1,6 @@
 
 # The OutN Project
-> current release : [v5.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md) [stable](https://github.com/Pranjal-SB/OutN/releases/latest)
+> current release : [v6.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md) [stable](https://github.com/Pranjal-SB/OutN/releases/latest)
 
 A **Self-hostable FOSS** pokemon recognition and assistant bot for discord and made more specifically for the discord pokemon game "Poketwo".
 
@@ -14,10 +14,9 @@ Made with ❤️ in Python
   - [Features](#features)
   - [Roadmap](#roadmap)
   - [Usage/installation](#usage-installation)
-    - [manually](#manually)
-    - [automatically](#automatically)
+    - [automatic](#automatic)
+    - [manual](#manual)
   - [Changelog](#changelog)
-  - [Documentation](#documentation)
   - [FAQ](#faq)
   - [Feedback and Support](#feedback-and-support)
   - [Contributing](#contributing)
@@ -70,21 +69,20 @@ download the OutN by
 - [latest stable release](https://github.com/Pranjal-SB/OutN/releases/latest)
 - [source code](https://github.com/Pranjal-SB/OutN/archive/refs/heads/main.zip)
 
-1. make a [discord bot](https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token#creating-a-bot)
-2. star [this repo](https://github.com/Pranjal-SB/OutN) 😉
+1. make a discord bot - [guide](https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token#creating-a-bot) / [official page](https://discord.com/developers/applications/)
+2. star [this repo](https://github.com/Pranjal-SB/OutN) 😉 ~~plz~~
 3. follow any of the below methods for usage
 
 
-### automatically
+### automatic
 
 extract the folder just run 'run.bat'
 
 it will install dependencies and run the program by itself
 
-### manually
+### manual
 - requires 
   - [python](https://www.python.org/) to be installed
-  - A discord [bot account](https://discord.com/developers/applications/)
 
 extract the folder and open a command prompt window in it
 
@@ -109,10 +107,6 @@ extract the folder and open a command prompt window in it
 ## Changelog
 
 [CHANGELOG.md](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md)
-
-## Documentation
-
-will add soon
 
 
 ## FAQ
