@@ -6,7 +6,7 @@ IF %ERRORLEVEL% NEQ 0 (
     exit /b
 )
 
-REM Install dependencies (assuming requirements.txt exists)
+REM Install dependencies
 pip install aiohttp aiosqlite discord numpy pillow tensorflow configparser
 
 REM Start main.py in a separate command window and exit
