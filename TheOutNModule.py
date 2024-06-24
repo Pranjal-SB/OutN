@@ -3,6 +3,7 @@ import json
 import os
 import platform
 import configparser
+import re
 
 import numpy as np
 from PIL import Image
