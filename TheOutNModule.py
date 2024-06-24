@@ -2,6 +2,7 @@ import aiohttp
 import json
 import os
 import platform
+import configparser
 
 import numpy as np
 from PIL import Image
@@ -39,6 +40,14 @@ with open('data/regional', 'r') as file:
   reg_list = file.read()
 
 
+#config
+config = configparser.ConfigParser()
+config_file = 'config.ini'
+config.read(config_file)
+
+clogconfirm = config['CONFIRMS']['CLOGCONFIRM']
+starchconfirm = config['CONFIRMS']['STARCHCONFIRM']
+
 async def outnmodule(bot, message):
   if message.author.id == 716390085896962058:
     if len(message.embeds) > 0:
@@ -58,19 +67,23 @@ async def outnmodule(bot, message):
 
         if name in mythical_list:
           await embeds.mythic_embed(message, name)
-          await star_helper.starit_mythic(bot, message, name)
+          if starchconfirm in 'Yy':
+            await star_helper.starit_mythic(bot, message, name)
 
         elif name in legendary_list and name != 'natu':
           await embeds.legendary_embed(message, name)
-          await star_helper.starit_legen(bot, message, name)
+          if starchconfirm in 'Yy':
+            await star_helper.starit_legen(bot, message, name)
 
         elif name in ub_list:
           await embeds.ub_embed(message, name)
-          await star_helper.starit_ub(bot, message, name)
+          if starchconfirm in 'Yy':
+            await star_helper.starit_ub(bot, message, name)
 
         elif "galar" in name or "alola" in name or "hisui" in name or name in reg_list:
           await embeds.reg_embed(message, name)
-          await star_helper.starit_reg(bot, message, name)
+          if starchconfirm in 'Yy':
+            await star_helper.starit_reg(bot, message, name)
 
         else:
           await embeds.common_embed(message, name)
@@ -78,6 +91,13 @@ async def outnmodule(bot, message):
     elif 'The pokémon is ' in message.content:
       for i in hint_helper.solve(message.content):
         await embeds.hint_embed(i, message)
+
+    elif 'Congratulations' in message.content and clogconfirm in 'Yy':
+      match = re.search(r' a level \d+ (\w+)!', message.content)
+      pokeName = match.group(1).capitalize() if match else 'Unknown'
+      level = int(re.search(r'level (\d+)', message.content).group(1))
+      await embeds.clog_embed(bot, pokeName, level, message)
+    
         
   elif 'The pokémon is ' in message.content:
     for i in hint_helper.solve(message.content):

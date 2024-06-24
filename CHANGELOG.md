@@ -29,3 +29,13 @@
     - added starboard to config
 - fixed bugs
     - hint not working
+
+## v6.0
+- added catch log
+- upgraded config system
+    - made rare ping optional
+    - made regional ping optional
+    - made starboard optional
+    - made catch log optional
+    - i.e made everything optional
+

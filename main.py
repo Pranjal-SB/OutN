@@ -8,10 +8,11 @@ from discord.ext import commands
 from makeconfig import get_config
 from TheOutNModule import outnmodule
 
-version = 'v5.0'
+version = 'v6.0'
 
 #config
 get_config()
+
 config = configparser.ConfigParser()
 config_file = 'config.ini'
 config.read(config_file)

@@ -32,15 +32,17 @@ Made with ❤️ in Python
 - ⭐ completely FOSS i.e. Free and Open Source
 - ⭐ 'Ai' recognition
 - ⭐  built-in Starboard
-- ❗ Rare ping
-- 👌 built-in hint solver
-- 🤩 Pretty embeds
-- ➕ Self-hostable
-- 😌 easy to use/Beginner-Friendly
-- 💪 ezy catch : just copy and paste
-- 😎 Automatic
-- ☁️ Light and not system heavy
-- 🤝 Cross platform
+- Rare and regional ping
+- catch logging
+- built-in hint solver
+- Pretty embeds
+- Self-hostable
+- fully customizable
+- easy to use/Beginner-Friendly
+- ezy catch - just copy and paste
+- Automatic
+- Light and not system heavy
+- Cross platform
 
 
 ## Roadmap
@@ -54,7 +56,7 @@ Made with ❤️ in Python
 - [x] Embeds <- [v3.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v30)
 - [x] Hint solver <- [v4.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v40)
 - [x] StarBoard <- [v5.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v50)
-- [ ] catch logs
+- [x] catch logs <- [v6.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v60)
 - [ ] spawn logs
 - [ ] help command
 - [ ] more..
