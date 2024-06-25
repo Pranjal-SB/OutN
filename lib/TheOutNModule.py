@@ -12,8 +12,10 @@ from tensorflow.keras.models import load_model
 
 import embeds
 import hint_helper
+import catch_helper
 import star_helper
 import preprocess_image
+
 
 loaded_model = load_model('model.h5', compile=False)
 
@@ -91,15 +93,12 @@ async def outnmodule(bot, message):
 
     elif 'The pokémon is ' in message.content:
       for i in hint_helper.solve(message.content):
-        await embeds.hint_embed(i, message)
+        await hint_helper.hint_embed(i, message)
 
     elif 'Congratulations' in message.content and clogconfirm in 'Yy':
-      match = re.search(r' a level \d+ (\w+)!', message.content)
-      pokeName = match.group(1).capitalize() if match else 'Unknown'
-      level = int(re.search(r'level (\d+)', message.content).group(1))
-      await embeds.clog_embed(bot, pokeName, level, message)
+      await catch_helper.catch_identifier(bot, message)
     
         
   elif 'The pokémon is ' in message.content:
     for i in hint_helper.solve(message.content):
-      await embeds.hint_embed(i, message)
+      await hint_helper.hint_embed(i, message)

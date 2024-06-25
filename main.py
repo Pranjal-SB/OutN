@@ -1,10 +1,12 @@
 import aiosqlite
 import configparser
 import os
+import sys
 
 import discord
 from discord.ext import commands
 
+sys.path.append('lib')
 from makeconfig import get_config
 from TheOutNModule import outnmodule
 
@@ -24,6 +26,8 @@ intents = discord.Intents.all()
 intents.message_content = True
 intents.members = True
 bot = commands.Bot(command_prefix='on.', intents=intents)
+bot.remove_command('help')
+
 
 @bot.event
 async def on_ready():
