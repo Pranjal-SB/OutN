@@ -39,3 +39,8 @@
     - made catch log optional
     - i.e made everything optional
 
+## v6.1
+- cleaned up program directory
+    - made folder 'lib'
+- fixed catch logger
+

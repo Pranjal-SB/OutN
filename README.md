@@ -1,6 +1,6 @@
 
 # The OutN Project
-> current release : [v6.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md) [stable](https://github.com/Pranjal-SB/OutN/releases/latest)
+> current release : [v6.1](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md) [stable](https://github.com/Pranjal-SB/OutN/releases/latest)
 
 A **Self-hostable FOSS** pokemon recognition and assistant bot for discord and made more specifically for the discord pokemon game "Poketwo".
 
@@ -65,7 +65,7 @@ Made with ❤️ in Python
 
 ## Usage/installation
 
-download the OutN by 
+download the OutN bot by 
 - [latest stable release](https://github.com/Pranjal-SB/OutN/releases/latest)
 - [source code](https://github.com/Pranjal-SB/OutN/archive/refs/heads/main.zip)
 
