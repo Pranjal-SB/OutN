@@ -34,9 +34,11 @@ Made with ❤️ in Python
 - Rare and regional ping
 - catch logging
 - built-in hint solver
+- spawn logging
 - Pretty embeds
 - Self-hostable
 - fully customizable
+- config based - no coding skills required
 - easy to use/Beginner-Friendly
 - ezy catch - just copy and paste
 - Automatic
@@ -56,7 +58,7 @@ Made with ❤️ in Python
 - [x] Hint solver <- [v4.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v40)
 - [x] StarBoard <- [v5.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v50)
 - [x] catch logs <- [v6.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v60)
-- [ ] spawn logs
+- [x] spawn logs <- [v7.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v70)
 - [ ] help command
 - [ ] more..
 
@@ -80,6 +82,10 @@ extract the folder just run 'run.bat'
 
 it will install dependencies and run the program by itself
 
+for further usage i.e. not the first run and the dependencies are all already installed
+
+you can just run 'just_run.bat' which will only run main.py and nothing else
+
 ### manual
 - requires 
   - [python](https://www.python.org/) to be installed
@@ -94,7 +100,7 @@ extract the folder and open a command prompt window in it
   ```
   python main.py
   ```
->  the program will ask for your [bot token](https://www.writebots.com/discord-bot-token/), [role ids](https://discordhelp.net/role-id) (for rare and regional ping) and [channel id](https://turbofuture.com/internet/Discord-Channel-ID) (for starboard) on initialisation and then will save it to 'config.ini' so that it does not ask you every time it runs.
+>  the program will ask for your [bot token](https://www.writebots.com/discord-bot-token/), [role ids](https://discordhelp.net/role-id) (for rare and regional ping) and [channel id](https://turbofuture.com/internet/Discord-Channel-ID) (for starboard, catch and spawn logger) on initialisation and then will save it to 'config.ini' so that it does not ask you every time it runs.
 
 > [!NOTE]
 > the token is only saved locally and is not sent anywhere.
@@ -135,9 +141,6 @@ currently you can:
 - contribute by fixing any bugs in the code you find
 - suggesting features
 
-## Authors
-
-- [Myself](https://github.com/Pranjal-SB)
 
 ## Code Of Conduct
 
@@ -159,3 +162,9 @@ Please Adhere to the [Code of Conduct](https://github.com/Pranjal-SB/OutN?tab=co
    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Pranjal-SB/OutN&type=Date" />
  </picture>
 </a>
+
+
+
+## Authors
+
+- [Myself](https://github.com/Pranjal-SB)

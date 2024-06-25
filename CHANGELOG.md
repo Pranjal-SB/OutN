@@ -44,3 +44,8 @@
     - made folder 'lib'
 - fixed catch logger
 
+## v7.0
+- cleaned up program directory even more i.e. made it even better
+- added spawn logger
+    - optional ofc.
+- fixed a couple minor bugs

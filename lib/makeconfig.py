@@ -29,8 +29,16 @@ def get_config():
         if clogconfirm in "Yy":
             clog = input("Enter the channel ID for Catch log: ")
 
-        config['CONFIRMS'] = {'RPINGCONFIRM': rpingconfirm, 'REGPINGCONFIRM': regpingconfirm, 'STARCHCONFIRM': starchconfirm, 'CLOGCONFIRM': clogconfirm}
-        config['DEFAULT'] = {'TOKEN': token, 'RPING': rping, 'REGPING': regping, 'STARCH': starch, 'CLOG': clog}
+        spawnlog = ''
+        spawnlogconfirm = input("Do you want to log the spawns (y/n): ")
+        if spawnlogconfirm in "Yy":
+            spawnlog = input("Enter the channel ID for Spawn log: ")
+
+        config['CONFIRMS'] = {
+            'RPINGCONFIRM': rpingconfirm, 'REGPINGCONFIRM': regpingconfirm, 'STARCHCONFIRM': starchconfirm, 'CLOGCONFIRM': clogconfirm, 'SPAWNLOGCONFIRM': spawnlogconfirm
+            }
+            
+        config['DEFAULT'] = {'TOKEN': token, 'RPING': rping, 'REGPING': regping, 'STARCH': starch, 'CLOG': clog, 'SPAWNLOG': spawnlog}
 
         with open(config_file, 'w') as configfile:
             config.write(configfile)
@@ -45,3 +53,4 @@ rping = int(config['DEFAULT']['RPING'])
 regping = int(config['DEFAULT']['REGPING'])
 starch = int(config['DEFAULT']['STARCH'])
 clog = int(config['DEFAULT']['CLOG'])
+spawnlog = int(config['DEFAULT']['SPAWNLOG'])

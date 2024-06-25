@@ -1,6 +1,5 @@
 import aiosqlite
 import configparser
-import os
 import sys
 
 import discord
@@ -9,8 +8,10 @@ from discord.ext import commands
 sys.path.append('lib')
 from makeconfig import get_config
 from TheOutNModule import outnmodule
+import hint_helper
+import catch_helper
 
-version = 'v6.0'
+version = 'v7.0'
 
 #config
 get_config()
@@ -20,6 +21,7 @@ config_file = 'config.ini'
 config.read(config_file)
 
 TKN = config['DEFAULT']['TOKEN']
+clogconfirm = config['CONFIRMS']['CLOGCONFIRM']
 
 #bot setup
 intents = discord.Intents.all()
@@ -31,7 +33,7 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-  bot.db = await aiosqlite.connect("pokemon.db")
+  bot.db = await aiosqlite.connect("data/pokemon.db")
   await bot.db.execute("CREATE TABLE IF NOT EXISTS pokies (command str)")
   await bot.db.commit()
   print()
@@ -43,6 +45,22 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-  await outnmodule(bot, message)
+  if message.author.id == 716390085896962058:
+    if len(message.embeds) > 0:
+      embed = message.embeds[0]
+      if "appeared!" in embed.title and embed.image:
+        url = embed.image.url
+        await outnmodule(bot, message, url)
+
+    elif 'The pokémon is ' in message.content:
+      for i in hint_helper.solve(message.content):
+        await hint_helper.hint_embed(i, message)
+
+    elif 'Congratulations' in message.content and clogconfirm in 'Yy':
+      await catch_helper.catch_identifier(bot, message)
+
+  elif 'The pokémon is ' in message.content:
+    for i in hint_helper.solve(message.content):
+      await hint_helper.hint_embed(i, message)
 
 bot.run(TKN)
