@@ -1,4 +1,3 @@
-import aiosqlite
 import configparser
 import sys
 
@@ -11,7 +10,7 @@ from TheOutNModule import outnmodule
 import hint_helper
 import catch_helper
 
-version = 'v7.0'
+version = 'v7.1'
 
 #config
 get_config()
@@ -33,15 +32,17 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-  bot.db = await aiosqlite.connect("data/pokemon.db")
-  await bot.db.execute("CREATE TABLE IF NOT EXISTS pokies (command str)")
-  await bot.db.commit()
+  print(f"{'='*40}")
+  print(f"{'The OutN Project':^40}")
+  print(f"{'='*40}")
+  print(f"{'Version:':<10} {version}")
+  print(f"{'GitHub:':<10} {'https://github.com/Pranjal-SB/OutN'}")
   print()
-  print("The OutN Project",version)
-  print("https://github.com/Pranjal-SB/OutN")
-  print()
-  print('Logged in as', bot.user)
+  print(f"{'Logged in as':<10} {bot.user.name}#{bot.user.discriminator}")
+  print(f"{'Bot User ID:':<10} {bot.user.id}")
+  print(f"{'='*40}")
   await bot.change_presence(status=discord.Status.online, activity=discord.Game("Pokémon"))
+
 
 @bot.event
 async def on_message(message):
