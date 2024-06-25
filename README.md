@@ -2,7 +2,7 @@
 # The OutN Project
 > current release : [v7.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md) [stable](https://github.com/Pranjal-SB/OutN/releases/latest)
 
-A **Self-hostable FOSS** pokemon recognition and assistant bot for discord and made more specifically for the discord pokemon game "Poketwo".
+An actively developed **Self-hostable FOSS** pokemon recognition and assistant bot for discord and made more specifically for the discord pokemon game "Poketwo".
 
 It can identify Pokémon from Pokétwo spawns, ping a role for rare and regional spawns and pin them, other many features!and it is fully automated and updated.
 
@@ -20,10 +20,10 @@ Made with ❤️ in Python
   - [FAQ](#faq)
   - [Feedback and Support](#feedback-and-support)
   - [Contributing](#contributing)
-  - [Authors](#authors)
   - [Code Of Conduct](#code-of-conduct)
   - [License](#license)
     - [In this case](#in-this-case)
+  - [Authors](#authors)
 
 
 ## Features
