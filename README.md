@@ -94,7 +94,7 @@ extract the folder and open a command prompt window in it
 
 1. install dependencies using:
   ```
-  pip install aiohttp aiosqlite discord numpy pillow tensorflow configparser
+  pip install aiohttp discord numpy pillow tensorflow configparser
   ```
 2. then run the program using:
   ```
