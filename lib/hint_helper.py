@@ -1,7 +1,7 @@
 import re
 from discord import Embed, Color
 
-with open('data/pokemon', 'r', encoding='utf8') as file:
+with open('data/pokes/pokemon', 'r', encoding='utf8') as file:
   pokemon_list = file.read()
 
 
