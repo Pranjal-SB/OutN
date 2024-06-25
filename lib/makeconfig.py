@@ -49,8 +49,3 @@ get_config()
 
 
 TKN = config['DEFAULT']['TOKEN']
-rping = int(config['DEFAULT']['RPING'])
-regping = int(config['DEFAULT']['REGPING'])
-starch = int(config['DEFAULT']['STARCH'])
-clog = int(config['DEFAULT']['CLOG'])
-spawnlog = int(config['DEFAULT']['SPAWNLOG'])
