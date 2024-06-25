@@ -49,3 +49,7 @@
 - added spawn logger
     - optional ofc.
 - fixed a couple minor bugs
+
+## v7.1
+- optimized code
+- removed useless files and parts
