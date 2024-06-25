@@ -8,6 +8,7 @@ It can identify Pokémon from Pokétwo spawns, ping a role for rare and regional
 
 Made with ❤️ in Python
 
+> Skip to [Usage/installation](https://github.com/Pranjal-SB/OutN/#usage-installation)
 
 ## Table of Contents
 - [The OutN Project](#the-outn-project)
