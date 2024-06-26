@@ -24,6 +24,7 @@ Made with ❤️ in Python
   - [Code Of Conduct](#code-of-conduct)
   - [License](#license)
     - [In this case](#in-this-case)
+  - [Star History](#star-history)
   - [Authors](#authors)
 
 
