@@ -1,5 +1,6 @@
 import configparser
 import sys
+import keep_alive
 
 import discord
 from discord.ext import commands
@@ -64,4 +65,5 @@ async def on_message(message):
     for i in hint_helper.solve(message.content):
       await hint_helper.hint_embed(i, message)
 
+keep_alive.keep_alive()
 bot.run(TKN)
