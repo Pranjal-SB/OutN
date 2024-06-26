@@ -14,7 +14,7 @@ import catch_helper
 version = 'v7.1'
 
 TKN = os.environ['token']
-
+clogconfirm = os.environ['clogconfirm']
 
 #bot setup
 intents = discord.Intents.all()
