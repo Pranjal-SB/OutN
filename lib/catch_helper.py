@@ -1,13 +1,6 @@
-import configparser
-
 from discord import Color, Embed
 
-#config
-config = configparser.ConfigParser()
-config_file = 'config.ini'
-config.read(config_file)
-
-clog = int(config['DEFAULT']['CLOG'])
+from config import clog
 
 async def catch_identifier(bot, message):
   await clog_embed(bot, message)

@@ -53,3 +53,8 @@
 ## v7.1
 - optimized code
 - removed useless files and parts
+
+## v8
+-added commands!!!
+    - added help command
+    - added identify command

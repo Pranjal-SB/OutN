@@ -5,6 +5,7 @@ import os
 config = configparser.ConfigParser()
 config_file = 'config.ini'
 
+
 def get_config():
     if not os.path.exists(config_file):
         token = input("Enter your Discord bot token: ")
@@ -36,16 +37,36 @@ def get_config():
 
         config['CONFIRMS'] = {
             'RPINGCONFIRM': rpingconfirm, 'REGPINGCONFIRM': regpingconfirm, 'STARCHCONFIRM': starchconfirm, 'CLOGCONFIRM': clogconfirm, 'SPAWNLOGCONFIRM': spawnlogconfirm
-            }
-            
-        config['DEFAULT'] = {'TOKEN': token, 'RPING': rping, 'REGPING': regping, 'STARCH': starch, 'CLOG': clog, 'SPAWNLOG': spawnlog}
+        }
+
+        config['DEFAULT'] = {'TOKEN': token, 'RPING': rping, 'REGPING': regping,
+                             'STARCH': starch, 'CLOG': clog, 'SPAWNLOG': spawnlog}
 
         with open(config_file, 'w') as configfile:
             config.write(configfile)
     else:
         config.read(config_file)
 
+
 get_config()
 
+config.read(config_file)
+
+# variables
 
 TKN = config['DEFAULT']['TOKEN']
+
+rpingconfirm = config['CONFIRMS']['RPINGCONFIRM']
+regpingconfirm = config['CONFIRMS']['REGPINGCONFIRM']
+starchconfirm = config['CONFIRMS']['STARCHCONFIRM']
+clogconfirm = config['CONFIRMS']['CLOGCONFIRM']
+spawnlogconfirm = config['CONFIRMS']['SPAWNLOGCONFIRM']
+
+rping = int(config['DEFAULT']['RPING']) if config['DEFAULT']['RPING'] else None
+regping = int(config['DEFAULT']['REGPING']
+              ) if config['DEFAULT']['REGPING'] else None
+starch = int(config['DEFAULT']['STARCH']
+             ) if config['DEFAULT']['STARCH'] else None
+clog = int(config['DEFAULT']['CLOG']) if config['DEFAULT']['CLOG'] else None
+spawnlog = int(config['DEFAULT']['SPAWNLOG']
+               ) if config['DEFAULT']['SPAWNLOG'] else None

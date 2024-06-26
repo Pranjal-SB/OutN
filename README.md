@@ -1,6 +1,6 @@
 
 # The OutN Project
-> current release : [v7.1](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md) [stable](https://github.com/Pranjal-SB/OutN/releases/latest)
+> current release : [v8](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md) [stable](https://github.com/Pranjal-SB/OutN/releases/latest)
 
 An actively developed **Self-hostable FOSS** pokemon recognition and assistant bot for discord and made more specifically for the discord pokemon game "Poketwo".
 
@@ -36,6 +36,7 @@ Made with ❤️ in Python
 - Rare and regional ping
 - catch logging
 - built-in hint solver
+- both automatic & manual identification support
 - spawn logging
 - Pretty embeds
 - Self-hostable
@@ -61,7 +62,9 @@ Made with ❤️ in Python
 - [x] StarBoard <- [v5.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v50)
 - [x] catch logs <- [v6.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v60)
 - [x] spawn logs <- [v7.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v70)
-- [ ] help command
+- [x] commands <- [v8.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v80)
+  - [x] help command
+  - [x] identify command
 - [ ] more..
 
 
@@ -89,6 +92,7 @@ for further usage i.e. not the first run and the dependencies are all already in
 you can just run 'just_run.bat' which will only run main.py and nothing else
 
 ### manual
+
 - requires 
   - [python](https://www.python.org/) to be installed
 
@@ -135,6 +139,8 @@ If you have any kind of feedback or need help feel free to contact me:
 - Discord 
   - [@mr.linear](https://discordapp.com/users/1140568955220656160)
   - [OutN support \[in development\]](https://discord.gg/aMJzFJsf)
+
+
 ## Contributing
 
 Contributions are always welcome!

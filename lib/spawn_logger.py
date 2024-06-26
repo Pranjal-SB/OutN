@@ -1,13 +1,6 @@
 from discord import Color, Embed
-import configparser
 
-# config
-config = configparser.ConfigParser()
-config_file = 'config.ini'
-config.read(config_file)
-
-spawnlog = int(config['DEFAULT']['SPAWNLOG'])
-
+from config import spawnlog
 
 async def logthespawn(bot, message, name):
   splog = bot.get_channel(spawnlog)

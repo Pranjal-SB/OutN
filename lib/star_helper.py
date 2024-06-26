@@ -1,14 +1,6 @@
 from discord import Embed, Color
-import configparser
 
-
-#config
-config = configparser.ConfigParser()
-config_file = 'config.ini'
-config.read(config_file)
-
-starch = int(config['DEFAULT']['STARCH'])
-
+from config import starch
 
 async def starit_mythic(bot, message, name):
   starboard = bot.get_channel(starch)

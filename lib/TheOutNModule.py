@@ -2,14 +2,15 @@ import aiohttp
 import json
 import os
 import platform
-import configparser
 
 import numpy as np
 from PIL import Image
 from io import BytesIO
 from tensorflow.keras.models import load_model
 
+from config import spawnlogconfirm, starchconfirm
 import spawn_embeds
+import cmd_embeds
 import preprocess_image
 import star_helper
 import spawn_logger
@@ -39,14 +40,6 @@ with open('data/pokes/ultrabeast', 'r') as file:
 with open('data/pokes/regional', 'r') as file:
   reg_list = file.read()
 
-
-#config
-config = configparser.ConfigParser()
-config_file = 'config.ini'
-config.read(config_file)
-
-spawnlogconfirm = config['CONFIRMS']['SPAWNLOGCONFIRM']
-starchconfirm = config['CONFIRMS']['STARCHCONFIRM']
 
 async def outnmodule(bot, message, url):
   async with aiohttp.ClientSession() as session:
@@ -84,3 +77,17 @@ async def outnmodule(bot, message, url):
 
   else:
     await spawn_embeds.common_embed(message, name)
+
+async def identifycmd(message, url):
+  async with aiohttp.ClientSession() as session:
+    async with session.get(url=url) as resp:
+      if resp.status == 200:
+        content = await resp.read()
+        image_data = BytesIO(content)
+        image = Image.open(image_data)
+  preprocessed_image = await preprocess_image.pimg(image)
+  predictions = loaded_model.predict(preprocessed_image)
+  classes_x = np.argmax(predictions, axis=1)
+  name = list(classes.keys())[classes_x[0]]
+  await cmd_embeds.identify_embed(message, name)
+

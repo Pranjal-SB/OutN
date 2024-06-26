@@ -1,26 +1,18 @@
-import configparser
 import sys
-
 import discord
 from discord.ext import commands
 
 sys.path.append('lib')
-from makeconfig import get_config
-from TheOutNModule import outnmodule
+from config import get_config, TKN, clogconfirm
+from TheOutNModule import outnmodule, identifycmd
 import hint_helper
 import catch_helper
+import cmd_embeds
 
-version = 'v7.1'
+version = 'v8'
 
 #config
 get_config()
-
-config = configparser.ConfigParser()
-config_file = 'config.ini'
-config.read(config_file)
-
-TKN = config['DEFAULT']['TOKEN']
-clogconfirm = config['CONFIRMS']['CLOGCONFIRM']
 
 #bot setup
 intents = discord.Intents.all()
@@ -63,5 +55,18 @@ async def on_message(message):
   elif 'The pokémon is ' in message.content:
     for i in hint_helper.solve(message.content):
       await hint_helper.hint_embed(i, message)
+
+  elif 'on.' in message.content:
+    msg = message.content
+    chnl = message.channel
+
+    if 'help' in msg.lower():
+      await cmd_embeds.help_embed(chnl)
+
+    elif 'identify' in msg.lower():
+      if message.attachments:
+        url = message.attachments[0].url
+        await identifycmd(message, url)
+
 
 bot.run(TKN)
