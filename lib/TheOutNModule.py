@@ -2,7 +2,7 @@ import aiohttp
 import json
 import os
 import platform
-import configparser
+import os
 
 import numpy as np
 from PIL import Image
@@ -40,13 +40,8 @@ with open('data/pokes/regional', 'r') as file:
   reg_list = file.read()
 
 
-#config
-config = configparser.ConfigParser()
-config_file = 'config.ini'
-config.read(config_file)
-
-spawnlogconfirm = config['CONFIRMS']['SPAWNLOGCONFIRM']
-starchconfirm = config['CONFIRMS']['STARCHCONFIRM']
+spawnlogconfirm = os.environ['spawnlogconfirm']
+starchconfirm = os.environ['starchconfirm']
 
 async def outnmodule(bot, message, url):
   async with aiohttp.ClientSession() as session:

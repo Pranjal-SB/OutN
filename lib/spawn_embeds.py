@@ -1,17 +1,11 @@
 from discord import Embed, Color
-import configparser
+import os
 
+rping = os.environ['rping']
+regping = os.environ['regping']
 
-#config
-config = configparser.ConfigParser()
-config_file = 'config.ini'
-config.read(config_file)
-
-rping = int(config['DEFAULT']['RPING'])
-regping = int(config['DEFAULT']['REGPING'])
-
-rpingconfirm = config['CONFIRMS']['RPINGCONFIRM']
-regpingconfirm = config['CONFIRMS']['REGPINGCONFIRM']
+rpingconfirm = os.environ['rpingconfirm']
+regpingconfirm = os.environ['regpingconfirm']
 
 #embeds
 async def mythic_embed(message, name):

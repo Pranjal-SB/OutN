@@ -1,27 +1,20 @@
 import configparser
 import sys
 import keep_alive
+import os
 
 import discord
 from discord.ext import commands
 
 sys.path.append('lib')
-from makeconfig import get_config
 from TheOutNModule import outnmodule
 import hint_helper
 import catch_helper
 
 version = 'v7.1'
 
-#config
-get_config()
+TKN = os.environ['token']
 
-config = configparser.ConfigParser()
-config_file = 'config.ini'
-config.read(config_file)
-
-TKN = config['DEFAULT']['TOKEN']
-clogconfirm = config['CONFIRMS']['CLOGCONFIRM']
 
 #bot setup
 intents = discord.Intents.all()
