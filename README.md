@@ -163,13 +163,7 @@ Please Adhere to the [Code of Conduct](https://github.com/Pranjal-SB/OutN?tab=co
 
 ## Star History
 
-<a href="https://star-history.com/#Pranjal-SB/OutN&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Pranjal-SB/OutN&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Pranjal-SB/OutN&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Pranjal-SB/OutN&type=Date" />
- </picture>
-</a>
+<a href="https://star-history.com/#Pranjal-SB/OutN&Date"><picture><source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Pranjal-SB/OutN&type=Date&theme=dark" /><source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Pranjal-SB/OutN&type=Date" /><img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Pranjal-SB/OutN&type=Date" /></picture></a>
 
 
 
