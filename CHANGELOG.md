@@ -55,6 +55,9 @@
 - removed useless files and parts
 
 ## v8
--added commands!!!
+- added commands!!!
     - added help command
     - added identify command
+
+## v9
+- upgraded starboard

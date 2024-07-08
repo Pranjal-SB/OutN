@@ -52,7 +52,7 @@ async def starit_ub(bot, message, name):
 async def starit_reg(bot, message, name):
   starboard = bot.get_channel(starch)
   og_embed = message.embeds[0]
-  staryu = Embed(color=Color.silver())
+  staryu = Embed(color=0xcfe4e8())
   staryu.set_author(name="Pokétwo", icon_url='https://cdn.discordapp.com/avatars/716390085896962058/3031fa9e2fabde1652a57ab33f4d7f37.webp?size=160')
   staryu.add_field(name=og_embed.title, value=og_embed.description, inline=False)
   staryu.add_field(name='',
