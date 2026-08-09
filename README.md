@@ -66,6 +66,25 @@ Made with ❤️ in Python
 - [x] commands <- [v8.0](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v80)
   - [x] help command
   - [x] identify command
+- [x] correct tier detection <- [v9](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v9)
+  - [x] exact-match tier lists instead of substring matching
+  - [x] tier lists checked against the model's own class names
+  - [x] recognition moved off the event loop so spawns stop freezing the bot
+- [x] better setup and fewer surprises <- [v9.1](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md#v91)
+  - [x] config checked at startup, with a report
+  - [x] one embed per hint instead of one per match
+  - [x] star reaction on the spawn
+  - [x] log file
+- [ ] per-server config
+  - [ ] right now the starboard channel and ping roles are global, so if the bot is in two servers, spawns from one get starred and pinged in the other
+  - [ ] settings should be stored per server instead
+- [ ] editable config
+  - [ ] fixing one wrong ID currently means deleting config.ini and re-answering every question, token included
+  - [ ] change a single setting without redoing setup
+- [ ] say when it is unsure
+  - [ ] use the recognition confidence, so a low-confidence guess reads as "probably X" instead of a plain statement
+- [ ] read settings from environment variables too
+  - [ ] keeps config.ini as the default, but makes docker and hosted deploys possible
 - [ ] more..
 
 
