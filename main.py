@@ -14,9 +14,10 @@ import cmd_embeds
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s %(name)s: %(message)s')
 
+# message_content is the only privileged intent the bot needs; nothing here
+# reads member data, so the members intent stays off.
 intents = discord.Intents.default()
 intents.message_content = True
-intents.members = True
 
 
 class OutNClient(discord.Client):
