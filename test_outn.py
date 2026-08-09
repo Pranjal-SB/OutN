@@ -63,6 +63,7 @@ def test_known_tiers():
       'mew': 'mythic',
       'deoxys-normal': 'mythic',
       'mewtwo': 'legendary',
+      'giratina': 'legendary',        # was 'mythic'; Pokétwo's own data says legendary
       'articuno galar': 'legendary',   # was 'regional' (list said 'articuno-galar')
       'ting-lu': 'legendary',          # was 'common' (list said 'ting-Lu')
       'zygarde-10': 'legendary',       # was 'common' (list said '10% zygarde')
