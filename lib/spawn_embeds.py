@@ -17,10 +17,11 @@ async def spawn_embed(message, name, phrase=None, color=COLOR_COMMON, ping=None)
   embed.set_footer(text=FOOTER)
   embed.add_field(name='New Spawn!', value=value)
   embed.add_field(name='Command', value=f"@Pokétwo#8236 c {name}")
-  await message.channel.send(embed=embed)
 
-  if ping is not None:
-    await message.channel.send(f"<@&{ping}>")
+  # The ping rides along with the embed. Sent separately it was a second
+  # message per spawn, and it notifies either way.
+  content = f"<@&{ping}>" if ping is not None else None
+  await message.channel.send(content=content, embed=embed)
 
 
 def rare_ping():

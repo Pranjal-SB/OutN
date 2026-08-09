@@ -9,7 +9,7 @@ POKETWO_AVATAR = (
 )
 FOOTER = "❤️ The OutN Project"
 PREFIX = 'on.'
-VERSION = 'v9'
+VERSION = 'v9.1'
 
 COLOR_RARE = Color.gold()
 COLOR_REGIONAL = 0xcfe4e8
