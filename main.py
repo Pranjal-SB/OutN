@@ -1,25 +1,40 @@
+import logging
 import sys
+
+import aiohttp
 import discord
-from discord.ext import commands
 
 sys.path.append('lib')
-from config import get_config, TKN, clogconfirm
+from config import TKN, clogconfirm
+from constants import POKETWO_ID, PREFIX, VERSION
 from TheOutNModule import outnmodule, identifycmd
 import hint_helper
 import catch_helper
 import cmd_embeds
 
-version = 'v8'
+logging.basicConfig(level=logging.INFO, format='%(levelname)s %(name)s: %(message)s')
 
-#config
-get_config()
-
-#bot setup
-intents = discord.Intents.all()
+intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
-bot = commands.Bot(command_prefix='on.', intents=intents)
-bot.remove_command('help')
+
+
+class OutNClient(discord.Client):
+  """discord.Client, not commands.Bot: every command here is dispatched by hand
+  in on_message, and process_commands was never called, so the command
+  framework was dead weight."""
+
+  async def setup_hook(self):
+    # One session for the bot's lifetime. Per-request sessions meant a fresh
+    # TCP + TLS handshake on every single spawn.
+    self.http_session = aiohttp.ClientSession()
+
+  async def close(self):
+    await self.http_session.close()
+    await super().close()
+
+
+bot = OutNClient(intents=intents)
 
 
 @bot.event
@@ -27,7 +42,7 @@ async def on_ready():
   print(f"{'='*40}")
   print(f"{'The OutN Project':^40}")
   print(f"{'='*40}")
-  print(f"{'Version:':<10} {version}")
+  print(f"{'Version:':<10} {VERSION}")
   print(f"{'GitHub:':<10} {'https://github.com/Pranjal-SB/OutN'}")
   print()
   print(f"{'Logged in as':<10} {bot.user.name}#{bot.user.discriminator}")
@@ -36,37 +51,44 @@ async def on_ready():
   await bot.change_presence(status=discord.Status.online, activity=discord.Game("Pokémon"))
 
 
+async def solve_hints(message):
+  for i in hint_helper.solve(message.content):
+    await hint_helper.hint_embed(i, message)
+
+
+async def handle_command(message):
+  # startswith, not `in`: 'check python.on.that help' used to fire the help embed.
+  command = message.content[len(PREFIX):].strip().lower()
+
+  if command.startswith('help'):
+    await cmd_embeds.help_embed(message.channel)
+
+  elif command.startswith('identify') and message.attachments:
+    await identifycmd(bot, message, message.attachments[0].url)
+
+
 @bot.event
 async def on_message(message):
-  if message.author.id == 716390085896962058:
-    if len(message.embeds) > 0:
+  if message.author.id == POKETWO_ID:
+    if message.embeds:
       embed = message.embeds[0]
-      if "appeared!" in embed.title and embed.image:
-        url = embed.image.url
-        await outnmodule(bot, message, url)
+      if embed.title and "appeared!" in embed.title and embed.image:
+        await outnmodule(bot, message, embed.image.url)
 
-    elif 'The pokémon is ' in message.content:
-      for i in hint_helper.solve(message.content):
-        await hint_helper.hint_embed(i, message)
+    elif hint_helper.HINT_PREFIX in message.content:
+      await solve_hints(message)
 
-    elif 'Congratulations' in message.content and clogconfirm in 'Yy':
+    elif 'Congratulations' in message.content and clogconfirm:
       await catch_helper.catch_identifier(bot, message)
 
-  elif 'The pokémon is ' in message.content:
-    for i in hint_helper.solve(message.content):
-      await hint_helper.hint_embed(i, message)
+  elif message.author.bot:
+    return
 
-  elif 'on.' in message.content:
-    msg = message.content
-    chnl = message.channel
+  elif hint_helper.HINT_PREFIX in message.content:
+    await solve_hints(message)
 
-    if 'help' in msg.lower():
-      await cmd_embeds.help_embed(chnl)
-
-    elif 'identify' in msg.lower():
-      if message.attachments:
-        url = message.attachments[0].url
-        await identifycmd(message, url)
+  elif message.content.startswith(PREFIX):
+    await handle_command(message)
 
 
 bot.run(TKN)

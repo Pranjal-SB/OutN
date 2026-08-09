@@ -1,9 +1,11 @@
-from discord import Embed, Color
+from discord import Embed
+
+from constants import COLOR_COMMON, FOOTER, VERSION
 
 
 async def help_embed(chnl):
     embed = Embed(
-        title="The OutN Project v8",
+        title=f"The OutN Project {VERSION}",
         url='https://github.com/Pranjal-SB/OutN/',
         color=0x6CB5E5,
         description='An Amazing FOSS Pokémon assist and more bot for the discord game "Poketwo".\nBelow are its features.',
@@ -53,12 +55,12 @@ async def help_embed(chnl):
         value="This message.",
         inline=False,
     )
-    embed.set_footer(text="❤️ The OutN Project")
+    embed.set_footer(text=FOOTER)
     await chnl.send(embed=embed)
 
 async def identify_embed(message, name):
-  embed = Embed(color=Color.blue())
-  embed.set_footer(text="❤️ The OutN Project")
+  embed = Embed(color=COLOR_COMMON)
+  embed.set_footer(text=FOOTER)
   embed.add_field(name='Pokémon Identified!',
                   value=f"It's **__{name}__**! catch it using:")
   embed.add_field(name='Command', value=f"@Pokétwo#8236 c {name}")

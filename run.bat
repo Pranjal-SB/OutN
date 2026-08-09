@@ -7,7 +7,7 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 
 REM Install dependencies
-pip install aiohttp discord numpy pillow tensorflow configparser
+pip install -r requirements.txt
 
 REM Start main.py in a separate command window and exit
 start "" python main.py

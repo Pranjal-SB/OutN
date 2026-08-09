@@ -1,65 +1,27 @@
-from discord import Embed, Color
+from discord import Embed
 
 from config import starch
+from constants import COLOR_RARE, FOOTER, POKETWO_AVATAR
 
-async def starit_mythic(bot, message, name):
+
+async def starit(bot, message, name, label, color=COLOR_RARE):
+  """Mirror a rare spawn into the starboard channel.
+
+  `label` is the tier headline, e.g. 'It is a Mythic Pokémon!'.
+  """
   starboard = bot.get_channel(starch)
+  if starboard is None:
+    return
+
   og_embed = message.embeds[0]
-  staryu = Embed(color=Color.gold())
-  staryu.set_author(name="Pokétwo", icon_url='https://cdn.discordapp.com/avatars/716390085896962058/3031fa9e2fabde1652a57ab33f4d7f37.webp?size=160')
+  staryu = Embed(color=color)
+  staryu.set_author(name="Pokétwo", icon_url=POKETWO_AVATAR)
   staryu.add_field(name=og_embed.title, value=og_embed.description, inline=False)
   staryu.add_field(name='',
                    value=f'[Jump to Message]({message.jump_url})', inline=False)
-  staryu.add_field(name='It is a Mythic Pokémon!',
-                   value=f'It is **__{name}__** !', inline=False)
+  staryu.add_field(name=label, value=f'It is **__{name}__** !', inline=False)
   staryu.set_image(url=og_embed.image.url)
-  staryu.set_footer(text="❤️ The OutN Project")
+  staryu.set_footer(text=FOOTER)
 
-  await starboard.send(embed=staryu)
-  await message.channel.send(f"Spawn sent to <#{starch}>!")
-
-
-async def starit_legen(bot, message, name):
-  starboard = bot.get_channel(starch)
-  og_embed = message.embeds[0]
-  staryu = Embed(color=Color.gold())
-  staryu.set_author(name="Pokétwo", icon_url='https://cdn.discordapp.com/avatars/716390085896962058/3031fa9e2fabde1652a57ab33f4d7f37.webp?size=160')
-  staryu.add_field(name=og_embed.title, value=og_embed.description, inline=False)
-  staryu.add_field(name='',
-                   value=f'[Jump to Message]({message.jump_url})', inline=False)
-  staryu.add_field(name='It is a Legendary Pokémon!',
-                   value=f'It is **__{name}__** !', inline=False)
-  staryu.set_image(url=og_embed.image.url)
-  staryu.set_footer(text="❤️ The OutN Project")
-  await starboard.send(embed=staryu)
-  await message.channel.send(f"Spawn sent to <#{starch}>!")
-
-async def starit_ub(bot, message, name):
-  starboard = bot.get_channel(starch)
-  og_embed = message.embeds[0]
-  staryu = Embed(color=Color.gold())
-  staryu.set_author(name="Pokétwo", icon_url='https://cdn.discordapp.com/avatars/716390085896962058/3031fa9e2fabde1652a57ab33f4d7f37.webp?size=160')
-  staryu.add_field(name=og_embed.title, value=og_embed.description, inline=False)
-  staryu.add_field(name='',
-                   value=f'[Jump to Message]({message.jump_url})', inline=False)
-  staryu.add_field(name='It is an Ultra Beast Pokémon!',
-                   value=f'It is **__{name}__** !', inline=False)
-  staryu.set_image(url=og_embed.image.url)
-  staryu.set_footer(text="❤️ The OutN Project")
-  await starboard.send(embed=staryu)
-  await message.channel.send(f"Spawn sent to <#{starch}>!")
-
-async def starit_reg(bot, message, name):
-  starboard = bot.get_channel(starch)
-  og_embed = message.embeds[0]
-  staryu = Embed(color=0xcfe4e8)
-  staryu.set_author(name="Pokétwo", icon_url='https://cdn.discordapp.com/avatars/716390085896962058/3031fa9e2fabde1652a57ab33f4d7f37.webp?size=160')
-  staryu.add_field(name=og_embed.title, value=og_embed.description, inline=False)
-  staryu.add_field(name='',
-                   value=f'[Jump to Message]({message.jump_url})', inline=False)
-  staryu.add_field(name='It is a Regional Pokémon!',
-                   value=f'It is **__{name}__** !', inline=False)
-  staryu.set_image(url=og_embed.image.url)
-  staryu.set_footer(text="❤️ The OutN Project")
   await starboard.send(embed=staryu)
   await message.channel.send(f"Spawn sent to <#{starch}>!")
