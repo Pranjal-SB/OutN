@@ -17,6 +17,9 @@ import spawn_logger
 
 log = logging.getLogger(__name__)
 
+# TensorFlow takes upwards of ten seconds to load the model and says nothing
+# while it does, which reads as a hang. flush because the import blocks after.
+print("loading recognition model, this takes a few seconds...", flush=True)
 loaded_model = load_model('data/model.h5', compile=False)
 
 # tier -> (spawn phrase, spawn colour, starboard label)

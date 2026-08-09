@@ -82,3 +82,19 @@
     - merged the four starboard functions and the five spawn embeds
     - trimmed requirements.txt from 46 pinned packages to the 5 actually used
     - added .gitignore so config.ini (your bot token) can't be committed
+## v9.1
+- config is checked at startup
+    - every configured role and channel is resolved when the bot logs in, and printed as a report
+    - a wrong ID, or a channel the bot cannot see, now says so on line one instead of silently never working
+    - also warns when the bot is missing Send Messages, Embed Links or Add Reactions in a channel it writes to
+- fixed hint spam
+    - a hint with few revealed letters matched several pokémon and the bot posted one embed for EACH of them
+    - '____' meant 11 embeds in a row, which is enough to get rate limited
+    - now always one embed listing every match
+- starboard now also reacts with a ⭐ on the spawn itself, on top of the confirmation message
+- rare ping is sent with the spawn embed instead of as its own message
+    - one message per spawn instead of two, still pings the same
+- the bot says 'loading recognition model' on startup
+    - tensorflow takes ~15 seconds and used to sit there silently looking frozen
+- 'on.identify' with no image attached now tells you to attach one instead of doing nothing
+- added a log file (outn.log) so a crash overnight leaves something to read

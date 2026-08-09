@@ -8,11 +8,20 @@ sys.path.append('lib')
 from config import TKN, clogconfirm
 from constants import POKETWO_ID, PREFIX, VERSION
 from TheOutNModule import outnmodule, identifycmd
+import config_check
 import hint_helper
 import catch_helper
 import cmd_embeds
 
-logging.basicConfig(level=logging.INFO, format='%(levelname)s %(name)s: %(message)s')
+# File handler so an overnight crash leaves something to read.
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(name)s: %(message)s',
+    handlers=[
+        logging.FileHandler('outn.log', encoding='utf8'),
+        logging.StreamHandler(),
+    ],
+)
 
 # message_content is the only privileged intent the bot needs; nothing here
 # reads member data, so the members intent stays off.
@@ -49,12 +58,15 @@ async def on_ready():
   print(f"{'Logged in as':<10} {bot.user.name}#{bot.user.discriminator}")
   print(f"{'Bot User ID:':<10} {bot.user.id}")
   print(f"{'='*40}")
+
+  config_check.check(bot)
+  await config_check.check_permissions(bot)
+
   await bot.change_presence(status=discord.Status.online, activity=discord.Game("Pokémon"))
 
 
 async def solve_hints(message):
-  for i in hint_helper.solve(message.content):
-    await hint_helper.hint_embed(i, message)
+  await hint_helper.hint_embed(hint_helper.solve(message.content), message)
 
 
 async def handle_command(message):
@@ -64,7 +76,12 @@ async def handle_command(message):
   if command.startswith('help'):
     await cmd_embeds.help_embed(message.channel)
 
-  elif command.startswith('identify') and message.attachments:
+  elif command.startswith('identify'):
+    if not message.attachments:
+      # Used to do nothing at all, which reads as the bot being broken.
+      await message.channel.send(
+          f"Attach an image to the message, like `{PREFIX}identify` + the spawn picture.")
+      return
     await identifycmd(bot, message, message.attachments[0].url)
 
 

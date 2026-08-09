@@ -35,9 +35,31 @@ def solve(content):
           and all(h == '_' or h == n for h, n in zip(hint, name))]
 
 
-async def hint_embed(i, message):
+MAX_LISTED = 20
+
+
+async def hint_embed(matches, message):
+  """Post one embed for the whole hint.
+
+  A hint with few revealed letters can match a dozen Pokémon; sending one embed
+  each got the bot rate limited and buried the channel.
+  """
+  if not matches:
+    return
+
   embed = Embed(title='Hint solved!', color=COLOR_COMMON)
   embed.set_footer(text=FOOTER)
-  embed.add_field(name=f'The Pokemon is {i}', value=message.content)
-  embed.add_field(name='Command', value=f"@Pokétwo#8236 c {i}")
+
+  if len(matches) == 1:
+    embed.add_field(name=f'The Pokemon is {matches[0]}', value=message.content)
+    embed.add_field(name='Command', value=f"@Pokétwo#8236 c {matches[0]}")
+  else:
+    shown = matches[:MAX_LISTED]
+    extra = len(matches) - len(shown)
+    embed.add_field(name=f'{len(matches)} possible matches', value=message.content)
+    commands = '\n'.join(f"@Pokétwo#8236 c {m}" for m in shown)
+    if extra:
+      commands += f"\n…and {extra} more"
+    embed.add_field(name='Commands', value=commands)
+
   await message.channel.send(embed=embed)

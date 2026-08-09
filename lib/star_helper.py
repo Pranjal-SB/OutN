@@ -1,7 +1,12 @@
+import logging
+
+import discord
 from discord import Embed
 
 from config import starch
 from constants import COLOR_RARE, FOOTER, POKETWO_AVATAR
+
+log = logging.getLogger(__name__)
 
 
 async def starit(bot, message, name, label, color=COLOR_RARE):
@@ -25,3 +30,11 @@ async def starit(bot, message, name, label, color=COLOR_RARE):
 
   await starboard.send(embed=staryu)
   await message.channel.send(f"Spawn sent to <#{starch}>!")
+
+  # Marks the spawn itself, so it stays obvious which message was starred
+  # after the confirmation scrolls away.
+  try:
+    await message.add_reaction('⭐')
+  except discord.HTTPException:
+    # Missing Add Reactions permission shouldn't lose the starboard post.
+    log.warning("could not react to %s", message.jump_url)
