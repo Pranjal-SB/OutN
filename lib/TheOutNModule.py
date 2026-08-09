@@ -1,93 +1,85 @@
-import aiohttp
-import json
-import os
-import platform
+import asyncio
+import logging
 
 import numpy as np
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 from io import BytesIO
 from tensorflow.keras.models import load_model
 
 from config import spawnlogconfirm, starchconfirm
+from constants import COLOR_RARE, COLOR_REGIONAL
 import spawn_embeds
 import cmd_embeds
+import pokedex
 import preprocess_image
 import star_helper
 import spawn_logger
 
+log = logging.getLogger(__name__)
+
 loaded_model = load_model('data/model.h5', compile=False)
 
-def clear_terminal():
-    if platform.system() == "Windows":
-        os.system('cls')
-    else:
-        os.system('clear')
+# tier -> (spawn phrase, spawn colour, starboard label)
+TIERS = {
+    'mythic': ('A mythic Pokemon spawned!', COLOR_RARE, 'It is a Mythic Pokémon!'),
+    'legendary': ('A legendary Pokemon spawned!', COLOR_RARE, 'It is a Legendary Pokémon!'),
+    'ub': ('An Ultra Beast spawned!', COLOR_RARE, 'It is an Ultra Beast Pokémon!'),
+    'regional': ('A regional Pokémon spawned!', COLOR_REGIONAL, 'It is a Regional Pokémon!'),
+}
 
-clear_terminal()
 
-with open('data/classes.json', 'r') as f:
-  classes = json.load(f)
+async def identify(session, url):
+  """Download an image and return the predicted Pokémon name, or None on failure."""
+  try:
+    async with session.get(url=url) as resp:
+      if resp.status != 200:
+        log.warning("image fetch failed: HTTP %s for %s", resp.status, url)
+        return None
+      content = await resp.read()
+  except (OSError, asyncio.TimeoutError) as exc:
+    log.warning("image fetch errored for %s: %s", url, exc)
+    return None
 
-with open('data/pokes/legendary', 'r') as file:
-  legendary_list = file.read()
+  try:
+    # convert('RGB') drops any alpha channel; the model takes 3 channels.
+    image = Image.open(BytesIO(content)).convert('RGB')
+  except UnidentifiedImageError:
+    log.warning("not a decodable image: %s", url)
+    return None
 
-with open('data/pokes/mythical', 'r') as file:
-  mythical_list = file.read()
-
-with open('data/pokes/ultrabeast', 'r') as file:
-  ub_list = file.read()
-
-with open('data/pokes/regional', 'r') as file:
-  reg_list = file.read()
+  preprocessed = preprocess_image.pimg(image)
+  # Inference is a blocking C call. Run it off the event loop or every spawn
+  # freezes the bot's heartbeat for the duration.
+  predictions = await asyncio.to_thread(loaded_model, preprocessed, training=False)
+  index = int(np.argmax(np.asarray(predictions), axis=1)[0])
+  return pokedex.index_to_name[index]
 
 
 async def outnmodule(bot, message, url):
-  async with aiohttp.ClientSession() as session:
-    async with session.get(url=url) as resp:
-      if resp.status == 200:
-        content = await resp.read()
-        image_data = BytesIO(content)
-        image = Image.open(image_data)
-  preprocessed_image = await preprocess_image.pimg(image)
-  predictions = loaded_model.predict(preprocessed_image)
-  classes_x = np.argmax(predictions, axis=1)
-  name = list(classes.keys())[classes_x[0]]
-  if spawnlogconfirm in 'Yy':
+  name = await identify(bot.http_session, url)
+  if name is None:
+    return
+
+  if spawnlogconfirm:
     await spawn_logger.logthespawn(bot, message, name)
 
-  if name in mythical_list:
-    await spawn_embeds.mythic_embed(message, name)
-    if starchconfirm in 'Yy':
-      await star_helper.starit_mythic(bot, message, name)
+  tier = pokedex.tier_of(name)
+  if tier == 'common':
+    await spawn_embeds.spawn_embed(message, name)
+    return
 
-  elif name in legendary_list and name != 'natu':
-    await spawn_embeds.legendary_embed(message, name)
-    if starchconfirm in 'Yy':
-      await star_helper.starit_legen(bot, message, name)
+  phrase, color, label = TIERS[tier]
+  ping = (spawn_embeds.regional_ping() if tier == 'regional'
+          else spawn_embeds.rare_ping())
+  await spawn_embeds.spawn_embed(message, name, phrase, color, ping)
 
-  elif name in ub_list:
-    await spawn_embeds.ub_embed(message, name)
-    if starchconfirm in 'Yy':
-      await star_helper.starit_ub(bot, message, name)
+  if starchconfirm:
+    await star_helper.starit(bot, message, name, label, color)
 
-  elif "galar" in name or "alola" in name or "hisui" in name or name in reg_list:
-    await spawn_embeds.reg_embed(message, name)
-    if starchconfirm in 'Yy':
-      await star_helper.starit_reg(bot, message, name)
 
-  else:
-    await spawn_embeds.common_embed(message, name)
-
-async def identifycmd(message, url):
-  async with aiohttp.ClientSession() as session:
-    async with session.get(url=url) as resp:
-      if resp.status == 200:
-        content = await resp.read()
-        image_data = BytesIO(content)
-        image = Image.open(image_data)
-  preprocessed_image = await preprocess_image.pimg(image)
-  predictions = loaded_model.predict(preprocessed_image)
-  classes_x = np.argmax(predictions, axis=1)
-  name = list(classes.keys())[classes_x[0]]
+async def identifycmd(bot, message, url):
+  name = await identify(bot.http_session, url)
+  if name is None:
+    await message.channel.send("Couldn't read that image.")
+    return
   await cmd_embeds.identify_embed(message, name)
-

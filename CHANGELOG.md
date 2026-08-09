@@ -61,3 +61,24 @@
 
 ## v9
 - upgraded starboard
+- fixed tier detection
+    - rare pokémon were matched as substrings of a text blob, so 'eternatus' counted as legendary because it contains 'natu'
+    - galarian articuno, ting-lu and both zygarde forms were misnamed in the data files and never got a rare ping
+    - tier lists are now exact-match sets checked against the model's own class names
+- fixed the bot freezing on every spawn
+    - image recognition now runs off the event loop instead of blocking the whole bot
+- fixed crashes
+    - failed image downloads and unreadable images no longer kill the handler
+    - images with transparency are converted properly before recognition
+    - a wrong or missing channel ID is now ignored instead of throwing
+- fixed config
+    - leaving a y/n question blank used to switch the feature ON and ping a broken role
+- fixed hint solving
+    - hints are no longer compiled as regex, so nobody can hang the bot with a crafted message
+- commands now have to start with 'on.' instead of merely containing it
+- added a self-check (`python test_outn.py`) covering tier lookup and hint solving
+- optimised code
+    - one shared HTTP session instead of a new one per spawn
+    - merged the four starboard functions and the five spawn embeds
+    - trimmed requirements.txt from 46 pinned packages to the 5 actually used
+    - added .gitignore so config.ini (your bot token) can't be committed

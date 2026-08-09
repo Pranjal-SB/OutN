@@ -1,6 +1,6 @@
 
 # The OutN Project
-> current release : [v8](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md) [stable](https://github.com/Pranjal-SB/OutN/releases/latest)
+> current release : [v9](https://github.com/Pranjal-SB/OutN/blob/main/CHANGELOG.md) [stable](https://github.com/Pranjal-SB/OutN/releases/latest)
 
 An actively developed **Self-hostable FOSS** pokemon recognition and assistant bot for discord and made more specifically for the discord pokemon game "Poketwo".
 
@@ -17,6 +17,7 @@ Made with ❤️ in Python
   - [Usage/installation](#usage-installation)
     - [automatic](#automatic)
     - [manual](#manual)
+  - [Development](#development)
   - [Changelog](#changelog)
   - [FAQ](#faq)
   - [Feedback and Support](#feedback-and-support)
@@ -100,7 +101,7 @@ extract the folder and open a command prompt window in it
 
 1. install dependencies using:
   ```
-  pip install aiohttp discord numpy pillow tensorflow configparser
+  pip install -r requirements.txt
   ```
 2. then run the program using:
   ```
@@ -113,7 +114,26 @@ extract the folder and open a command prompt window in it
 
 > [!CAUTION]
 > make sure not to upload 'config.ini' anywhere as it contains your bot token.
+> the repo's '.gitignore' already excludes it, so it will not be committed by accident.
 
+> [!NOTE]
+> when you create the bot, enable the **Message Content** intent in the Discord developer portal.
+> that is the only privileged intent OutN needs.
+
+
+## Development
+
+run the self-check before opening a pull request:
+
+```
+python test_outn.py
+```
+
+it needs no third-party packages and takes about a second. it verifies that
+every name in 'data/pokes/*' is a real class the model can actually predict,
+that tier lookup is correct, and that the hint solver works. if you edit any
+file in 'data/pokes/', this is what catches a typo before it silently costs
+someone a rare ping.
 
 
 ## Changelog
