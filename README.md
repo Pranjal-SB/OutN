@@ -195,10 +195,11 @@ Please Adhere to the [Code of Conduct](https://github.com/Pranjal-SB/OutN?tab=co
 
 ## License
 
-[No License](https://choosealicense.com/no-permission/)
+[Apache License 2.0](LICENSE)
 #### In this case
-- you are **free to use** and share the software as long as you `give credit` to the developer a.k.a myself which is only fair.
-- you have no permission from the creator of the software to modify, or share the software `without credits` or `without permission`. Although a code host such as GitHub may allow you to view and fork the code, this does not imply that you are permitted to modify, or share the software for any purpose or without permission.
+- you are **free to use**, modify, self-host, and redistribute the software, including commercially.
+- you must `give credit`: keep the copyright and license notices, and state what you changed in any modified version you distribute.
+- you get an explicit patent grant from me, and the software comes with no warranty.
 
 ## Star History
 
